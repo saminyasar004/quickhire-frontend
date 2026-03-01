@@ -1,12 +1,34 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
 	const [isOpen, setIsOpen] = useState(false);
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [user, setUser] = useState<any>(null);
+	const router = useRouter();
+
+	useEffect(() => {
+		const token = localStorage.getItem("token");
+		const storedUser = localStorage.getItem("user");
+		if (token && storedUser) {
+			setIsLoggedIn(true);
+			setUser(JSON.parse(storedUser));
+		}
+	}, []);
+
+	const handleLogout = () => {
+		localStorage.removeItem("token");
+		localStorage.removeItem("user");
+		setIsLoggedIn(false);
+		setUser(null);
+		router.push("/");
+		setIsOpen(false);
+	};
 
 	return (
 		<nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-50">
@@ -43,18 +65,41 @@ const Navbar = () => {
 
 					{/* Auth Buttons (Desktop Only) */}
 					<div className="hidden md:flex items-center space-x-8">
-						<Link
-							href="/login"
-							className="text-primary font-bold text-lg hover:opacity-80 transition-all"
-						>
-							Login
-						</Link>
-						<Link
-							href="/signup"
-							className="bg-primary text-white font-bold px-8 py-4 rounded-lg hover:shadow-xl hover:shadow-primary/30 transition-all text-lg"
-						>
-							Sign Up
-						</Link>
+						{isLoggedIn ? (
+							<>
+								<Link
+									href={
+										user?.role === "ADMIN"
+											? "/admin"
+											: "/dashboard"
+									}
+									className="text-primary font-bold text-lg hover:opacity-80 transition-all"
+								>
+									Dashboard
+								</Link>
+								<button
+									onClick={handleLogout}
+									className="bg-primary text-white font-bold px-8 py-4 rounded-lg hover:shadow-xl hover:shadow-primary/30 transition-all text-lg"
+								>
+									Logout
+								</button>
+							</>
+						) : (
+							<>
+								<Link
+									href="/auth/login"
+									className="text-primary font-bold text-lg hover:opacity-80 transition-all"
+								>
+									Login
+								</Link>
+								<Link
+									href="/auth/register"
+									className="bg-primary text-white font-bold px-8 py-4 rounded-lg hover:shadow-xl hover:shadow-primary/30 transition-all text-lg"
+								>
+									Sign Up
+								</Link>
+							</>
+						)}
 					</div>
 
 					{/* Mobile Menu Button */}
@@ -92,20 +137,44 @@ const Navbar = () => {
 							Browse Companies
 						</Link>
 						<div className="pt-6 flex flex-col space-y-4">
-							<Link
-								href="/signup"
-								onClick={() => setIsOpen(false)}
-								className="w-full bg-primary text-white font-bold px-8 py-5 rounded-none text-center text-xl shadow-lg"
-							>
-								Sign Up For Free
-							</Link>
-							<Link
-								href="/login"
-								onClick={() => setIsOpen(false)}
-								className="w-full text-primary font-bold px-8 py-4 text-center text-xl"
-							>
-								Login
-							</Link>
+							{isLoggedIn ? (
+								<>
+									<Link
+										href={
+											user?.role === "ADMIN"
+												? "/admin"
+												: "/dashboard"
+										}
+										onClick={() => setIsOpen(false)}
+										className="w-full bg-primary text-white font-bold px-8 py-5 rounded-none text-center text-xl shadow-lg"
+									>
+										My Dashboard
+									</Link>
+									<button
+										onClick={handleLogout}
+										className="w-full text-primary font-bold px-8 py-4 text-center text-xl"
+									>
+										Logout
+									</button>
+								</>
+							) : (
+								<>
+									<Link
+										href="/auth/register"
+										onClick={() => setIsOpen(false)}
+										className="w-full bg-primary text-white font-bold px-8 py-5 rounded-none text-center text-xl shadow-lg"
+									>
+										Sign Up For Free
+									</Link>
+									<Link
+										href="/auth/login"
+										onClick={() => setIsOpen(false)}
+										className="w-full text-primary font-bold px-8 py-4 text-center text-xl"
+									>
+										Login
+									</Link>
+								</>
+							)}
 						</div>
 					</div>
 				</div>
