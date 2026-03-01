@@ -9,9 +9,11 @@ import JobCard from "@/components/shared/JobCard";
 import { jobService, STATIC_URL } from "@/services/api";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import JobModal from "@/components/shared/JobModal";
 
 export default function Home() {
 	const [jobs, setJobs] = useState<any[]>([]);
+	const [selectedJob, setSelectedJob] = useState<any>(null);
 	const [loading, setLoading] = useState(true);
 	const [searchQuery, setSearchQuery] = useState("");
 	const [locationQuery, setLocationQuery] = useState("");
@@ -80,7 +82,11 @@ export default function Home() {
 					) : featuredJobs.length > 0 ? (
 						<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 							{featuredJobs.map((job) => (
-								<JobCard key={job.id} job={job} />
+								<JobCard
+									key={job.id}
+									job={job}
+									onClick={() => setSelectedJob(job)}
+								/>
 							))}
 						</div>
 					) : (
@@ -115,10 +121,10 @@ export default function Home() {
 					) : latestJobs.length > 0 ? (
 						<div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
 							{latestJobs.map((job) => (
-								<Link
-									href={`/jobs/${job.id}`}
+								<button
 									key={job.id}
-									className="p-4 lg:p-6 bg-white border border-gray-100 rounded-none flex items-center justify-between hover:shadow-xl transition-all group cursor-pointer"
+									onClick={() => setSelectedJob(job)}
+									className="p-4 lg:p-6 bg-white border border-gray-100 rounded-none flex items-center justify-between hover:shadow-xl transition-all group cursor-pointer text-left w-full"
 								>
 									<div className="flex items-center gap-4 lg:gap-5">
 										<div className="w-12 h-12 lg:w-14 lg:h-14 bg-white rounded-xl border border-gray-100 flex items-center justify-center overflow-hidden shrink-0 group-hover:border-primary/20 transition-all">
@@ -152,7 +158,7 @@ export default function Home() {
 										</div>
 									</div>
 									<ArrowRight className="w-5 h-5 text-gray-300 group-hover:text-[#4640DE] group-hover:translate-x-1 transition-all" />
-								</Link>
+								</button>
 							))}
 						</div>
 					) : (
@@ -162,6 +168,12 @@ export default function Home() {
 					)}
 				</div>
 			</section>
+			{selectedJob && (
+				<JobModal
+					job={selectedJob}
+					onClose={() => setSelectedJob(null)}
+				/>
+			)}
 		</div>
 	);
 }

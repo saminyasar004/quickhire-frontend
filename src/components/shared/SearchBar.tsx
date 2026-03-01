@@ -2,21 +2,25 @@
 
 import { useState } from "react";
 import { Search, MapPin, ChevronDown } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 interface SearchBarProps {
 	onSearch: (query: string, location: string) => void;
 }
 
 const SearchBar = ({ onSearch }: SearchBarProps) => {
+	const router = useRouter();
 	const [query, setQuery] = useState("");
 	const [location, setLocation] = useState("Florence, Italy");
 
 	const handleSearch = () => {
 		onSearch(query, location);
-		const element = document.getElementById("featured-jobs");
-		if (element) {
-			element.scrollIntoView({ behavior: "smooth" });
-		}
+		const params = new URLSearchParams();
+		if (query) params.set("query", query);
+		if (location && location !== "Florence, Italy")
+			params.set("location", location);
+
+		router.push(`/jobs?${params.toString()}`);
 	};
 
 	return (
