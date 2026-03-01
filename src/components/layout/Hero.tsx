@@ -43,22 +43,24 @@ const Hero = ({ onSearch }: HeroProps) => {
 							new career heights and passionate about startups.
 						</p>
 
-						<div className="relative z-20 mb-8">
+						<div className="relative z-20 min-h-[100px]">
 							<SearchBar onSearch={onSearch} />
 						</div>
 
-						<div className="flex items-center gap-2 text-gray-500 font-medium">
-							<span className="text-gray-400">Popular :</span>
-							<span className="hover:text-primary cursor-pointer transition-colors">
+						<div className="flex items-center gap-2 mt-8 text-lg">
+							<span className="text-gray-400 font-medium whitespace-nowrap">
+								Popular :
+							</span>
+							<span className="text-[#18191C] font-bold cursor-pointer hover:text-primary transition-colors whitespace-nowrap">
 								UI Designer,
 							</span>
-							<span className="hover:text-primary cursor-pointer transition-colors">
+							<span className="text-[#18191C] font-bold cursor-pointer hover:text-primary transition-colors whitespace-nowrap">
 								UX Researcher,
 							</span>
-							<span className="hover:text-primary cursor-pointer transition-colors">
+							<span className="text-[#18191C] font-bold cursor-pointer hover:text-primary transition-colors whitespace-nowrap">
 								Android,
 							</span>
-							<span className="hover:text-primary cursor-pointer transition-colors">
+							<span className="text-[#18191C] font-bold cursor-pointer hover:text-primary transition-colors whitespace-nowrap">
 								Admin
 							</span>
 						</div>
