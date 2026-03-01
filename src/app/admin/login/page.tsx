@@ -53,7 +53,12 @@ export default function AdminLoginPage() {
 						Restricted Access
 					</h1>
 					<p className="text-gray-500 font-medium">
-						Please sign in with your admin account
+						Please sign in with your admin account using email:{" "}
+						<span className="text-primary">
+							admin@quickhire.com
+						</span>{" "}
+						and password:{" "}
+						<span className="text-primary">admin123</span>
 					</p>
 				</div>
 
