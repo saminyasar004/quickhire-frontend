@@ -1,41 +1,28 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
-
-const geistSans = Geist({
-	variable: "--font-geist-sans",
-	subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-	variable: "--font-geist-mono",
-	subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
-	title: "Next.js Starter Template",
-	description: "A modern starter template for Next.js",
+	title: "QuickHire - Simple Job Board Application",
+	description:
+		"Great platform for the job seeker that searching for new career heights and passionate about startups.",
+	icons: {
+		icon: "/favicon.png",
+	},
 };
 
 export default function RootLayout({
 	children,
-}: Readonly<{
+}: {
 	children: React.ReactNode;
-}>) {
+}) {
 	return (
-		<html lang="en" suppressHydrationWarning>
-			<body
-				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-			>
-				<ThemeProvider
-					attribute="class"
-					defaultTheme="system"
-					enableSystem
-					disableTransitionOnChange
-				>
-					{children}
-				</ThemeProvider>
+		<html lang="en">
+			<body className="antialiased font-sans bg-white min-h-screen flex flex-col">
+				<Navbar />
+				<main className="grow">{children}</main>
+				<Footer />
 			</body>
 		</html>
 	);
