@@ -14,7 +14,7 @@ const Hero = ({ onSearch }: HeroProps) => {
 					src="/hero-pattern.png"
 					alt=""
 					fill
-					className="object-contain object-top-right opacity-100"
+					className="object-cover object-top-right opacity-100"
 					priority
 				/>
 			</div>
@@ -32,7 +32,7 @@ const Hero = ({ onSearch }: HeroProps) => {
 										src="/hero-heading-underline.png"
 										alt=""
 										fill
-										className="object-contain"
+										className="object-cover"
 									/>
 								</div>
 							</span>
