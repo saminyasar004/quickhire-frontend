@@ -3,43 +3,45 @@ import Image from "next/image";
 
 const CTASection = () => {
 	return (
-		<section className="py-24 container mx-auto px-4 sm:px-6 lg:px-8">
-			<div className="bg-primary rounded-3xl overflow-hidden relative min-h-[400px] flex items-center">
-				{/* Background blobs */}
-				<div className="absolute top-0 right-0 w-1/2 h-full opacity-20">
-					<Image
-						src="/hero-pattern.png"
-						alt=""
-						fill
-						className="object-cover"
-					/>
-				</div>
-
-				<div className="relative z-10 px-12 lg:px-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
-					<div>
-						<h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-							Start posting <br /> jobs today
-						</h2>
-						<p className="text-primary-foreground/80 text-lg mb-10 max-w-md">
-							Start posting jobs for only $10. Reach thousands of
-							job seekers today.
-						</p>
-						<Link
-							href="/admin"
-							className="inline-block bg-white text-primary font-bold px-10 py-4 rounded-xl hover:shadow-2xl transition-all"
-						>
-							Sign Up For Free
-						</Link>
+		<section className="py-32 bg-white">
+			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
+				<div className="relative overflow-hidden">
+					{/* Background Shape - SVG from user */}
+					<div className="absolute inset-0 z-0">
+						<Image
+							src="/shape-background.svg"
+							alt=""
+							fill
+							className="object-cover lg:object-fill"
+							priority
+						/>
 					</div>
 
-					<div className="hidden lg:block relative h-[350px]">
-						<div className="absolute top-1/2 left-0 -translate-y-1/2 w-full h-[120%] bg-white/10 rounded-3xl backdrop-blur-3xl p-4 rotate-3">
-							<Image
-								src="/dashboard-view.svg"
-								alt="Dashboard View"
-								fill
-								className="object-cover rounded-2xl shadow-2xl"
-							/>
+					<div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center px-6 lg:px-20 py-24">
+						<div className="text-white">
+							<h2 className="text-[56px] font-black leading-[1.1] mb-8">
+								Start posting <br /> jobs today
+							</h2>
+							<p className="text-white/80 text-xl font-medium mb-12">
+								Start posting jobs for only $10.
+							</p>
+							<Link
+								href="/admin"
+								className="inline-block bg-white text-[#4640DE] font-black px-12 py-5 text-xl hover:shadow-2xl hover:scale-105 transition-all"
+							>
+								Sign Up For Free
+							</Link>
+						</div>
+
+						<div className="relative hidden lg:block h-full">
+							<div className="absolute top-1/2 -right-10 -translate-y-1/2 w-[120%] h-[120%]">
+								<Image
+									src="/dashboard-view.svg"
+									alt="Dashboard View"
+									fill
+									className="object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
+								/>
+							</div>
 						</div>
 					</div>
 				</div>
