@@ -47,20 +47,20 @@ const Hero = ({ onSearch }: HeroProps) => {
 							<SearchBar onSearch={onSearch} />
 						</div>
 
-						<div className="flex items-center gap-2 mt-8 text-lg">
-							<span className="text-gray-400 font-medium whitespace-nowrap">
+						<div className="flex items-center gap-2 text-sm">
+							<span className="text-[#202430] font-medium whitespace-nowrap">
 								Popular :
 							</span>
-							<span className="text-[#18191C] font-bold cursor-pointer hover:text-primary transition-colors whitespace-nowrap">
+							<span className="text-[#202430] font-semibold cursor-pointer hover:text-primary transition-colors whitespace-nowrap">
 								UI Designer,
 							</span>
-							<span className="text-[#18191C] font-bold cursor-pointer hover:text-primary transition-colors whitespace-nowrap">
+							<span className="text-[#202430] font-semibold cursor-pointer hover:text-primary transition-colors whitespace-nowrap">
 								UX Researcher,
 							</span>
-							<span className="text-[#18191C] font-bold cursor-pointer hover:text-primary transition-colors whitespace-nowrap">
+							<span className="text-[#202430] font-semibold cursor-pointer hover:text-primary transition-colors whitespace-nowrap">
 								Android,
 							</span>
-							<span className="text-[#18191C] font-bold cursor-pointer hover:text-primary transition-colors whitespace-nowrap">
+							<span className="text-[#202430] font-semibold cursor-pointer hover:text-primary transition-colors whitespace-nowrap">
 								Admin
 							</span>
 						</div>
