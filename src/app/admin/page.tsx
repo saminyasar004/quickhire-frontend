@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { jobService, applicationService } from "@/services/api";
+import { jobService, applicationService, STATIC_URL } from "@/services/api";
 
 export default function AdminDashboard() {
 	const [jobs, setJobs] = useState<any[]>([]);
@@ -219,7 +219,7 @@ export default function AdminDashboard() {
 															<div className="w-12 h-12 bg-white rounded-xl border border-gray-100 flex items-center justify-center overflow-hidden shrink-0 shadow-sm">
 																{job.logo ? (
 																	<img
-																		src={`http://localhost:5000/public/uploads/${job.logo}`}
+																		src={`${STATIC_URL}/${job.logo}`}
 																		alt=""
 																		className="w-full h-full object-contain"
 																	/>

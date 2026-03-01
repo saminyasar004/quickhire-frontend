@@ -1,7 +1,7 @@
 "use client";
 
 import { use, useEffect, useState } from "react";
-import { jobService } from "@/services/api";
+import { jobService, STATIC_URL } from "@/services/api";
 import ApplyForm from "@/components/shared/ApplyForm";
 import Link from "next/link";
 
@@ -64,7 +64,7 @@ export default function JobDetails({
 								<div className="w-20 h-20 bg-white rounded-2xl border border-gray-100 flex items-center justify-center overflow-hidden shrink-0 shadow-sm">
 									{job.logo ? (
 										<img
-											src={`http://localhost:5000/public/uploads/${job.logo}`}
+											src={`${STATIC_URL}/${job.logo}`}
 											alt={job.company}
 											className="w-full h-full object-contain"
 										/>

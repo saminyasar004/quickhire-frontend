@@ -1,4 +1,6 @@
-const API_URL = "http://localhost:5000/api";
+export const STATIC_URL =
+	process.env.NEXT_PUBLIC_STATIC_URL || "http://localhost:5000/static";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
 
 const getHeaders = (isMultipart = false) => {
 	const token = localStorage.getItem("access_token");

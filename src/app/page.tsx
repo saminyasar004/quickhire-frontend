@@ -6,7 +6,7 @@ import Brands from "@/components/shared/Brands";
 import Categories from "@/components/shared/Categories";
 import CTASection from "@/components/shared/CTASection";
 import JobCard from "@/components/shared/JobCard";
-import { jobService } from "@/services/api";
+import { jobService, STATIC_URL } from "@/services/api";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
@@ -124,7 +124,7 @@ export default function Home() {
 										<div className="w-12 h-12 lg:w-14 lg:h-14 bg-white rounded-xl border border-gray-100 flex items-center justify-center overflow-hidden shrink-0 group-hover:border-primary/20 transition-all">
 											{job.logo ? (
 												<img
-													src={`http://localhost:5000/public/uploads/${job.logo}`}
+													src={`${STATIC_URL}/${job.logo}`}
 													alt={job.company}
 													className="w-full h-full object-contain"
 												/>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { STATIC_URL } from "@/services/api";
 
 interface JobCardProps {
 	job: {
@@ -21,7 +22,7 @@ const JobCard = ({ job }: JobCardProps) => {
 					<div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center overflow-hidden shrink-0 border border-gray-100 group-hover:border-primary/20 transition-all">
 						{job.logo ? (
 							<img
-								src={`http://localhost:5000/public/uploads/${job.logo}`}
+								src={`${STATIC_URL}/${job.logo}`}
 								alt={job.company}
 								className="w-full h-full object-contain"
 							/>
