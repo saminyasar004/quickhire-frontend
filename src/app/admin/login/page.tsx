@@ -44,14 +44,10 @@ export default function AdminLoginPage() {
 						<Image
 							src="/logo-white.svg"
 							alt="QuickHire"
-							width={40}
-							height={40}
-							className="w-10 h-10"
+							width={100}
+							height={100}
+							className="w-40 h-40"
 						/>
-						<span className="text-2xl font-black text-white tracking-tight">
-							QuickHire{" "}
-							<span className="text-primary">Admin</span>
-						</span>
 					</div>
 					<h1 className="text-2xl font-bold text-white mb-2">
 						Restricted Access
