@@ -144,23 +144,16 @@ export const applicationService = {
 		);
 		return response.json();
 	},
-	applyWithProfile: async (jobId: string) => {
-		const userStr = localStorage.getItem("user");
-		if (!userStr) throw new Error("User not logged in");
-		const user = JSON.parse(userStr);
-
-		const applicationData = {
+	applyWithProfile: async (jobId: string, applicationData: any) => {
+		const payload = {
 			job_id: jobId,
-			name: user.name,
-			email: user.email,
-			resume_link: "https://docs.google.com/document/d/placeholder/edit", // Placeholder as per auto-apply requirement
-			cover_note: `Automated application from ${user.name} via QuickHire profile.`,
+			...applicationData,
 		};
 
 		const response = await processedFetch(`${API_URL}/applications`, {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify(applicationData),
+			body: JSON.stringify(payload),
 		});
 		return response.json();
 	},
