@@ -50,7 +50,7 @@ const Navbar = () => {
 					{/* Navigation Links - Centered (Desktop Only) */}
 					<div className="hidden pl-8 items-center md:flex flex-1 justify-start space-x-12">
 						<Link
-							href="/find-jobs"
+							href="/jobs"
 							className="text-gray-500 hover:text-primary px-3 py-2 text-lg font-semibold transition-colors"
 						>
 							Find Jobs
@@ -123,7 +123,7 @@ const Navbar = () => {
 				<div className="md:hidden absolute top-20 left-0 right-0 bg-white border-b border-gray-100 shadow-xl overflow-hidden transition-all animate-in slide-in-from-top duration-300">
 					<div className="px-4 pt-4 pb-8 space-y-4">
 						<Link
-							href="/find-jobs"
+							href="/jobs"
 							onClick={() => setIsOpen(false)}
 							className="block text-gray-500 hover:text-primary px-3 py-4 text-xl font-semibold border-b border-gray-50"
 						>
