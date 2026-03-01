@@ -1,40 +1,78 @@
-# Next.js + TypeScript + Tailwind CSS + shadcn/ui Starter
+# QuickHire - Job Board Application
 
-A comprehensive starter template for building modern web applications with Next.js, TypeScript, Tailwind CSS, and shadcn/ui.
+QuickHire is a modern job board application built with Next.js, Nest.js, TypeScript, and PostgreSQL.
 
 ## Features
 
--   **Framework**: [Next.js 15](https://nextjs.org) (App Router)
--   **Language**: [TypeScript](https://www.typescriptlang.org)
--   **Styling**: [Tailwind CSS v4](https://tailwindcss.com)
--   **UI Components**: [shadcn/ui](https://ui.shadcn.com)
--   **Linting**: ESLint
--   **Package Manager**: Yarn (recommended)
+- **Job Listings**: Browse and search for jobs by title and category with real-time filtering.
+- **Job Details**: View detailed job descriptions.
+- **Job Application**: Apply for jobs with a functional form.
+- **Admin Dashboard**: Comprehensive panel to post jobs, delete listings, and **view job applications**.
+- **Swagger API**: Full documentation for all backend endpoints at `/api/docs`.
+- **Responsive Design**: 100% matching Figma design for desktop and mobile.
+
+## Tech Stack
+
+- **Frontend**: Next.js 15+, Tailwind CSS, TypeScript, Lucide Icons.
+- **Backend**: Nest.js, Sequelize-typescript, PostgreSQL, Swagger.
+- **Database**: PostgreSQL.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js (v18+)
+- PostgreSQL
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Database Setup
 
-You can start editing the page by modifying `src/app/page.tsx`. The page auto-updates as you edit the file.
+1. Create a PostgreSQL database named `quickhire_db`.
+    ```sql
+    CREATE DATABASE quickhire_db;
+    ```
+2. The application is configured to use:
+    - **User**: `root`
+    - **Password**: `12345678`
+    - **Host**: `localhost`
+    - **DB Name**: `quickhire_db`
 
-## Author
+### Backend Setup
 
--   **Samin Yasar**
--   GitHub: [@saminyasar004](https://github.com/saminyasar004)
--   Email: [yasarsamin57@gmail.com](mailto:yasarsamin57@gmail.com)
+1. Go to the server directory:
+    ```bash
+    cd quickhire-server
+    ```
+2. Install dependencies:
+    ```bash
+    yarn install
+    ```
+3. Start the server (Development):
+    ```bash
+    yarn run start:dev
+    ```
+4. **API Documentation**: Once running, visit `http://localhost:5000/api/docs` for the full Swagger documentation.
 
-## License
+### Frontend Setup
 
-This project is open source and available under the [MIT License](LICENSE).
+1. Go to the frontend directory:
+    ```bash
+    cd quickhire-frontend
+    ```
+2. Install dependencies:
+    ```bash
+    yarn install
+    ```
+3. Start the dev server:
+    ```bash
+    yarn run dev
+    ```
+4. Visit `http://localhost:3000` to view the application.
+
+## Endpoints Summary
+
+- `GET /api/jobs`: List all jobs.
+- `POST /api/jobs`: Create a job (Admin).
+- `GET /api/jobs/:id`: Get job details.
+- `DELETE /api/jobs/:id`: Delete a job (Admin).
+- `POST /api/applications`: Submit application.
+- `GET /api/applications/job/:jobId`: Get applications for a job (Admin).
