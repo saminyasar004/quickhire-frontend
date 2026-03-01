@@ -57,10 +57,10 @@ const categories = [
 
 const Categories = () => {
 	return (
-		<section className="py-24 bg-white">
+		<section className="py-16 lg:py-24 bg-white">
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-				<div className="flex justify-between items-center mb-16">
-					<h2 className="text-[56px] font-black text-[#18191C] leading-[1.1]">
+				<div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-10 lg:mb-16 gap-6">
+					<h2 className="text-4xl lg:text-[56px] font-black text-[#18191C] leading-[1.1]">
 						Explore by{" "}
 						<span className="text-[#007BFF]">category</span>
 					</h2>
@@ -73,19 +73,19 @@ const Categories = () => {
 					</Link>
 				</div>
 
-				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
 					{categories.map((cat) => (
 						<Link
 							href={`/jobs?category=${cat.name}`}
 							key={cat.name}
-							className={`group p-10 border rounded-none transition-all duration-300 relative h-full flex flex-col ${
+							className={`group p-6 lg:p-10 border rounded-none transition-all duration-300 relative flex lg:flex-col items-center lg:items-start gap-4 lg:gap-0 ${
 								cat.isHighlighted
-									? "bg-[#4640DE] border-[#4640DE] text-white shadow-2xl shadow-blue-500/30"
+									? "bg-[#4640DE] border-[#4640DE] text-white shadow-xl lg:shadow-2xl lg:shadow-blue-500/30"
 									: "bg-white border-gray-100 hover:border-[#4640DE]/10 hover:bg-[#4640DE]/5"
 							}`}
 						>
 							<div
-								className={`mb-10 ${
+								className={`shrink-0 lg:mb-10 ${
 									cat.isHighlighted
 										? "text-white"
 										: "text-[#4640DE]"
@@ -94,9 +94,9 @@ const Categories = () => {
 								{cat.icon}
 							</div>
 
-							<div className="mt-auto">
+							<div className="flex-1 lg:mt-auto">
 								<h3
-									className={`text-2xl font-black mb-4 ${
+									className={`text-xl lg:text-2xl font-black mb-1 lg:mb-4 ${
 										cat.isHighlighted
 											? "text-white"
 											: "text-[#18191C]"
@@ -106,7 +106,7 @@ const Categories = () => {
 								</h3>
 								<div className="flex items-center justify-between">
 									<p
-										className={`text-lg font-medium transition-colors ${
+										className={`text-base lg:text-lg font-medium transition-colors ${
 											cat.isHighlighted
 												? "text-white/80"
 												: "text-gray-400"
@@ -115,7 +115,7 @@ const Categories = () => {
 										{cat.count} jobs available
 									</p>
 									<ArrowRight
-										className={`w-5 h-5 transition-all ${
+										className={`w-5 h-5 ml-auto lg:ml-0 transition-all ${
 											cat.isHighlighted
 												? "text-white"
 												: "text-gray-400 group-hover:text-[#4640DE] group-hover:translate-x-1"

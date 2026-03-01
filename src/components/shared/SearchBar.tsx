@@ -20,9 +20,9 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
 	};
 
 	return (
-		<div className="bg-white p-2 rounded-lg shadow-2xl shadow-blue-500/10 flex flex-col md:flex-row items-center gap-2 border border-gray-100 mb-6 w-[900px] absolute">
-			<div className="flex items-center gap-4 flex-[1.2] px-4 py-3 min-w-0">
-				<Search className="text-gray-400 shrink-0" size={24} />
+		<div className="bg-white p-4 lg:p-2 rounded-xl lg:rounded-lg shadow-2xl shadow-blue-500/10 flex flex-col lg:flex-row items-center gap-4 lg:gap-2 border border-gray-100 mb-6 w-full lg:w-[900px] lg:absolute lg:left-0">
+			<div className="flex items-center gap-4 w-full lg:flex-[1.2] px-4 py-3 min-w-0 border-b lg:border-b-0 border-gray-50 lg:border-none">
+				<Search className="text-[#4640DE] shrink-0" size={24} />
 				<input
 					type="text"
 					placeholder="Job title or keyword"
@@ -33,10 +33,10 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
 				/>
 			</div>
 
-			<div className="hidden md:block w-px h-10 bg-gray-100" />
+			<div className="hidden lg:block w-px h-10 bg-gray-100" />
 
-			<div className="flex items-center gap-4 flex-1 px-4 py-3 min-w-0 relative group cursor-pointer">
-				<MapPin className="text-gray-400 shrink-0" size={24} />
+			<div className="flex items-center gap-4 w-full lg:flex-1 px-4 py-3 min-w-0 relative group cursor-pointer border-b lg:border-b-0 border-gray-50 lg:border-none">
+				<MapPin className="text-[#4640DE] shrink-0" size={24} />
 				<input
 					type="text"
 					placeholder="Location"
@@ -45,14 +45,14 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
 					readOnly
 				/>
 				<ChevronDown
-					className="text-gray-400 shrink-0 ml-auto"
+					className="text-[#4640DE] shrink-0 ml-auto"
 					size={20}
 				/>
 			</div>
 
 			<button
 				onClick={handleSearch}
-				className="bg-primary text-white font-bold px-10 py-4 rounded-lg hover:bg-primary/90 transition-all w-full md:w-auto text-lg whitespace-nowrap"
+				className="bg-[#4640DE] text-white font-black px-10 py-5 lg:py-4 rounded-lg hover:bg-[#4640DE]/90 transition-all w-full lg:w-auto text-xl lg:text-lg whitespace-nowrap"
 			>
 				Search my job
 			</button>
