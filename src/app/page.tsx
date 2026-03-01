@@ -121,19 +121,18 @@ export default function Home() {
 									className="p-4 lg:p-6 bg-white border border-gray-100 rounded-none flex items-center justify-between hover:shadow-xl transition-all group cursor-pointer"
 								>
 									<div className="flex items-center gap-4 lg:gap-5">
-										<div className="w-12 h-12 lg:w-14 lg:h-14 bg-gray-50 rounded-lg flex items-center justify-center text-2xl lg:text-3xl group-hover:bg-[#4640DE]/5 transition-colors">
-											{
-												[
-													"🎨",
-													"💻",
-													"📈",
-													"📢",
-													"💰",
-													"👥",
-													"⚙️",
-													"💼",
-												][Math.floor(Math.random() * 8)]
-											}
+										<div className="w-12 h-12 lg:w-14 lg:h-14 bg-white rounded-xl border border-gray-100 flex items-center justify-center overflow-hidden shrink-0 group-hover:border-primary/20 transition-all">
+											{job.logo ? (
+												<img
+													src={`http://localhost:5000/public/uploads/${job.logo}`}
+													alt={job.company}
+													className="w-full h-full object-contain"
+												/>
+											) : (
+												<span className="text-2xl lg:text-3xl">
+													🏢
+												</span>
+											)}
 										</div>
 										<div>
 											<h3 className="font-bold text-gray-900 group-hover:text-[#4640DE] transition-colors text-base lg:text-lg line-clamp-1">

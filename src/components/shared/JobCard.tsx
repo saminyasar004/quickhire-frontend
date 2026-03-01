@@ -18,8 +18,16 @@ const JobCard = ({ job }: JobCardProps) => {
 		<Link href={`/jobs/${job.id}`} className="block h-full group">
 			<div className="p-6 lg:p-8 bg-white border border-gray-100 rounded-2xl hover:shadow-2xl hover:shadow-gray-200/50 transition-all flex flex-col h-full">
 				<div className="flex justify-between items-start mb-6">
-					<div className="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-primary/5 transition-colors">
-						{job.logo || "🏢"}
+					<div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center overflow-hidden shrink-0 border border-gray-100 group-hover:border-primary/20 transition-all">
+						{job.logo ? (
+							<img
+								src={`http://localhost:5000/public/uploads/${job.logo}`}
+								alt={job.company}
+								className="w-full h-full object-contain"
+							/>
+						) : (
+							<span className="text-2xl">🏢</span>
+						)}
 					</div>
 					<span className="px-4 py-1.5 border border-primary text-primary text-xs font-bold rounded-full uppercase tracking-wider group-hover:bg-primary group-hover:text-white transition-all">
 						{job.type}

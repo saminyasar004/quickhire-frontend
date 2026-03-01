@@ -61,20 +61,16 @@ export default function JobDetails({
 					<div className="lg:col-span-2">
 						<div className="bg-white p-10 rounded-3xl border border-gray-100 shadow-xl shadow-gray-100/50 mb-8">
 							<div className="flex items-center gap-6 mb-8">
-								<div className="w-20 h-20 bg-gray-50 rounded-2xl flex items-center justify-center text-4xl">
-									{
-										[
-											"🎨",
-											"🏢",
-											"💻",
-											"📈",
-											"📢",
-											"💰",
-											"👥",
-											"⚙️",
-											"💼",
-										][Math.floor(Math.random() * 9)]
-									}
+								<div className="w-20 h-20 bg-white rounded-2xl border border-gray-100 flex items-center justify-center overflow-hidden shrink-0 shadow-sm">
+									{job.logo ? (
+										<img
+											src={`http://localhost:5000/public/uploads/${job.logo}`}
+											alt={job.company}
+											className="w-full h-full object-contain"
+										/>
+									) : (
+										<span className="text-4xl">🏢</span>
+									)}
 								</div>
 								<div>
 									<h1 className="text-3xl font-bold text-gray-900 mb-2">
