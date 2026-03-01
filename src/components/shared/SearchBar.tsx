@@ -11,14 +11,13 @@ interface SearchBarProps {
 const SearchBar = ({ onSearch }: SearchBarProps) => {
 	const router = useRouter();
 	const [query, setQuery] = useState("");
-	const [location, setLocation] = useState("Florence, Italy");
+	const [location, setLocation] = useState("");
 
 	const handleSearch = () => {
 		onSearch(query, location);
 		const params = new URLSearchParams();
 		if (query) params.set("query", query);
-		if (location && location !== "Florence, Italy")
-			params.set("location", location);
+		if (location) params.set("location", location);
 
 		router.push(`/jobs?${params.toString()}`);
 	};
@@ -39,14 +38,15 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
 
 			<div className="hidden lg:block w-px h-10 bg-gray-100" />
 
-			<div className="flex items-center gap-4 w-full lg:flex-1 px-4 py-3 min-w-0 relative group cursor-pointer border-b lg:border-b-0 border-gray-50 lg:border-none">
+			<div className="flex items-center gap-4 w-full lg:flex-1 px-4 py-3 min-w-0 relative group border-b lg:border-b-0 border-gray-50 lg:border-none">
 				<MapPin className="text-[#4640DE] shrink-0" size={24} />
 				<input
 					type="text"
 					placeholder="Location"
-					className="w-full focus:outline-none text-gray-700 bg-transparent placeholder:text-gray-400 text-lg cursor-pointer"
+					className="w-full focus:outline-none text-gray-700 bg-transparent placeholder:text-gray-400 text-lg"
 					value={location}
-					readOnly
+					onChange={(e) => setLocation(e.target.value)}
+					onKeyDown={(e) => e.key === "Enter" && handleSearch()}
 				/>
 				<ChevronDown
 					className="text-[#4640DE] shrink-0 ml-auto"
