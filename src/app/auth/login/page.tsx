@@ -5,12 +5,14 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { authService } from "@/services/api";
+import { Eye, EyeOff } from "lucide-react";
 
 export default function UserLoginPage() {
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
+	const [email, setEmail] = useState("admin@quickhire.com");
+	const [password, setPassword] = useState("admin123");
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState("");
+	const [showPassword, setShowPassword] = useState(false);
 	const router = useRouter();
 
 	const handleLogin = async (e: React.FormEvent) => {
@@ -80,18 +82,31 @@ export default function UserLoginPage() {
 							placeholder="e.g. name@company.com"
 						/>
 					</div>
-					<div>
+					<div className="relative">
 						<label className="block text-sm font-bold text-gray-700 mb-2 ml-1">
 							Password
 						</label>
-						<input
-							type="password"
-							required
-							value={password}
-							onChange={(e) => setPassword(e.target.value)}
-							className="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-primary focus:bg-white focus:outline-none transition-all placeholder:text-gray-300 font-medium"
-							placeholder="••••••••"
-						/>
+						<div className="relative">
+							<input
+								type={showPassword ? "text" : "password"}
+								required
+								value={password}
+								onChange={(e) => setPassword(e.target.value)}
+								className="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-primary focus:bg-white focus:outline-none transition-all placeholder:text-gray-300 font-medium"
+								placeholder="••••••••"
+							/>
+							<button
+								type="button"
+								onClick={() => setShowPassword(!showPassword)}
+								className="absolute right-4 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-primary transition-colors"
+							>
+								{showPassword ? (
+									<EyeOff size={20} />
+								) : (
+									<Eye size={20} />
+								)}
+							</button>
+						</div>
 					</div>
 
 					<button
